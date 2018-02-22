@@ -49,7 +49,7 @@ public class PersonDaoTest {
     }
 
     @Test
-    @DatabaseSetup(SETUP + "/personEmpty.xml")
+    @DatabaseSetup(SETUP + "/person_empty.xml")
     public void findAddTest_empty() {
         // Exercise
         final List<Person> actual = dao.findAll();
