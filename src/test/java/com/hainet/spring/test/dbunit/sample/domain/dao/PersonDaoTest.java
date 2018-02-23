@@ -92,4 +92,15 @@ public class PersonDaoTest {
         // Exercise
         dao.delete(person);
     }
+
+    @Test
+    @ExpectedDatabase(
+            value = EXPECTED + "/assertionModeNonStrictTest.xml",
+            table = "person",
+            // データセットに記述のないカラムはテスト対象外となる。
+            assertionMode = DatabaseAssertionMode.NON_STRICT
+    )
+    public void assertionModeNonStrictTest() {
+        // Leave it.
+    }
 }
