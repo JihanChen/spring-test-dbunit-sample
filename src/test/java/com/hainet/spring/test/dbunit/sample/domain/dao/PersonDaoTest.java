@@ -3,6 +3,7 @@ package com.hainet.spring.test.dbunit.sample.domain.dao;
 import com.github.springtestdbunit.DbUnitTestExecutionListener;
 import com.github.springtestdbunit.annotation.DatabaseSetup;
 import com.github.springtestdbunit.annotation.ExpectedDatabase;
+import com.github.springtestdbunit.assertion.DatabaseAssertionMode;
 import com.hainet.spring.test.dbunit.sample.domain.entity.Person;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -59,10 +60,14 @@ public class PersonDaoTest {
     }
 
     @Test
-    @ExpectedDatabase(value = EXPECTED + "/insertTest.xml", table = "person")
+    @ExpectedDatabase(
+            value = EXPECTED + "/insertTest.xml",
+            table = "person",
+            assertionMode = DatabaseAssertionMode.NON_STRICT
+    )
     public void insertTest() {
         // Setup
-        final Person person = new Person(3, "person");
+        final Person person = new Person(0, "person");
 
         // Exercise
         dao.insert(person);
