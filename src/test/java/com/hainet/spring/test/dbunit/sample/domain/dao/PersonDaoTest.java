@@ -97,10 +97,21 @@ public class PersonDaoTest {
     @ExpectedDatabase(
             value = EXPECTED + "/assertionModeNonStrictTest.xml",
             table = "person",
-            // データセットに記述のないカラムはテスト対象外となる。
+            // データセットに記述のあるカラムのみテスト対象とする。
             assertionMode = DatabaseAssertionMode.NON_STRICT
     )
     public void assertionModeNonStrictTest() {
+        // Leave it.
+    }
+
+    @Test
+    @ExpectedDatabase(
+            value = EXPECTED + "/assertionModeNonStrictUnorderedTest.xml",
+            table = "person",
+            // データセットの行の順序を無視する。
+            assertionMode = DatabaseAssertionMode.NON_STRICT_UNORDERED
+    )
+    public void assertionModeNonStrictUnorderedTest() {
         // Leave it.
     }
 }
